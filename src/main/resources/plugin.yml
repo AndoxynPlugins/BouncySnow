@@ -3,3 +3,7 @@ main: net.daboross.bukkitdev.bouncysnow.BouncySnow
 version: 1.0
 author: Dabo Ross
 description: Makes you bounce on snow
+commands:
+  reloadbouncysnow:
+    description: Reloads the Bouncy Snow configuration
+    permission: bouncysnow.reload
