@@ -1,0 +1,5 @@
+name: BouncySnow
+main: net.daboross.bukkitdev.bouncysnow.BouncySnow
+version: 1.0
+author: Dabo Ross
+description: Makes you bounce on snow
