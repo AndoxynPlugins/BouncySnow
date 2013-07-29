@@ -33,43 +33,43 @@ import org.bukkit.util.Vector;
  * @author daboross
  */
 public class BouncySnow extends JavaPlugin implements Listener {
-	
-	private int snowBounce;
-	
-	@Override
-	public void onEnable() {
-		PluginManager pm = getServer().getPluginManager();
-		pm.registerEvents(this, this);
-		this.saveDefaultConfig();
-		snowBounce = this.getConfig().getInt("snow-bounce");
-	}
-	
-	@Override
-	public void onDisable() {
-	}
-	
-	@EventHandler
-	public void onFall(EntityDamageEvent ede) {
-		if (ede.getCause() == EntityDamageEvent.DamageCause.FALL) {
-			Location location = ede.getEntity().getLocation();
-			if (location.getY() > 79
-					&& (location.getBlock().getType() == Material.SNOW_BLOCK
-					|| location.add(0, -1, 0).getBlock().getType() == Material.SNOW_BLOCK)) {
-				ede.setCancelled(true);
-				ede.getEntity().setVelocity(new Vector(0, 20, 0));
-			}
-		}
-	}
-	
-	@Override
-	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		if (cmd.getName().equalsIgnoreCase("reloadbouncysnow")) {
-			reloadConfig();
-			snowBounce = this.getConfig().getInt("snow-bounce");
-			sender.sendMessage(ChatColor.GREEN + "BouncySnow factor is now " + ChatColor.RED + snowBounce + ChatColor.GREEN + "!");
-		} else {
-			sender.sendMessage("BouncySnow doesn't know about the command /" + cmd.getName());
-		}
-		return true;
-	}
+
+    private int snowBounce;
+
+    @Override
+    public void onEnable() {
+        PluginManager pm = getServer().getPluginManager();
+        pm.registerEvents(this, this);
+        this.saveDefaultConfig();
+        snowBounce = this.getConfig().getInt("snow-bounce");
+    }
+
+    @Override
+    public void onDisable() {
+    }
+
+    @EventHandler
+    public void onFall(EntityDamageEvent ede) {
+        if (ede.getCause() == EntityDamageEvent.DamageCause.FALL) {
+            Location location = ede.getEntity().getLocation();
+            if (location.getY() > 79
+                    && (location.getBlock().getType() == Material.SNOW_BLOCK
+                    || location.add(0, -1, 0).getBlock().getType() == Material.SNOW_BLOCK)) {
+                ede.setCancelled(true);
+                ede.getEntity().setVelocity(new Vector(0, 20, 0));
+            }
+        }
+    }
+
+    @Override
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        if (cmd.getName().equalsIgnoreCase("reloadbouncysnow")) {
+            reloadConfig();
+            snowBounce = this.getConfig().getInt("snow-bounce");
+            sender.sendMessage(ChatColor.GREEN + "BouncySnow factor is now " + ChatColor.RED + snowBounce + ChatColor.GREEN + "!");
+        } else {
+            sender.sendMessage("BouncySnow doesn't know about the command /" + cmd.getName());
+        }
+        return true;
+    }
 }
