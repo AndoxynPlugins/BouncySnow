@@ -1,6 +1,6 @@
-name: BouncySnow
+name: ${project.name}
 main: net.daboross.bukkitdev.bouncysnow.BouncySnow
-version: 1.0
+version: ${project.version}
 author: Dabo Ross
 description: Makes you bounce on snow
 commands:
